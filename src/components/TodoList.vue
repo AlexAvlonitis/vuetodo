@@ -2,11 +2,14 @@
   <div>
     <h1>Todo List</h1>
     <ul>
-      <li v-for="todoItem in todoItems" :key="todoItem.id">
-        <TodoItem v-bind:name="todoItem.name"/>
-      </li>
+      <TodoItem
+        v-for="(todoItem, index) in todoItems"
+        v-bind:todoItem="todoItem"
+        v-bind:key="index"
+        v-on:remove-item="removeItem"
+      />
     </ul>
-    <form v-on:submit='addItem'>
+    <form v-on:submit.prevent='addItem'>
       <input type='text' placeholder="Add task" v-model='item' />
       <br />
       <input type='submit' value="Add" />
@@ -24,18 +27,19 @@ export default {
   },
   data: function() {
     return {
-      index: 0,
       item: '',
       todoItems: []
     }
   },
   methods: {
-    addItem: function(e) {
-      e.preventDefault();
-
-      this.todoItems.push({name: this.item, id: this.index});
-      this.index += 1;
-    }
+    addItem() {
+      this.todoItems.push({name: this.item});
+      this.item = '';
+    },
+    removeItem(todoItem) {
+      const todoIndex = this.todoItems.indexOf(todoItem);
+      this.todoItems.splice(todoIndex, 1);
+    },
   }
 }
 </script>
