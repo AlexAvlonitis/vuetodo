@@ -39,7 +39,7 @@ export default {
     removeItem(todoItem) {
       const todoIndex = this.todoItems.indexOf(todoItem);
       this.todoItems.splice(todoIndex, 1);
-    },
+    }
   }
 }
 </script>
