@@ -1,6 +1,6 @@
 # vuetodo
 
-Vue Playgroung, todo list
+Vue Playground, todo list
 
 ## Project setup
 ```
