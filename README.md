@@ -1,5 +1,7 @@
 # vuetodo
 
+Vue Playgroung, todo list
+
 ## Project setup
 ```
 yarn install
